@@ -1,10 +1,33 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const ToDoList = () => {
 
-    const [tasks, setTasks] = useState(["Eat breakfast", "Take a shower", "Walk the brain"]);
+    const [tasks, setTasks] = useState(["r", "g", "b" ]);
     const [newTask, setNewTask] = useState('');
 
+
+    //loads tasks from local storage when page is loaded
+
+    useEffect(() => {
+        console.log("Loading tasks from localStorage");
+        try {
+            const savedTasks = JSON.parse(localStorage.getItem('tasks')) || '[]';
+            console.log("Parsed tasks:", savedTasks);
+            setTasks(savedTasks);
+        } catch (error) {
+            console.error("Error parsing tasks from localStorage", error);
+            setTasks([]);
+        }
+    }, []);
+    
+    useEffect(() => {
+        console.log("Saving tasks to localStorage:", tasks);
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+    }, [tasks]);
+    
+
+
+    
     const handleInputChange = (event) => {
         setNewTask(event.target.value);
     }
