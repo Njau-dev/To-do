@@ -91,7 +91,7 @@ const ToDoList = () => {
                 <input type="text" placeholder="Enter new task ..." value={newTask} onChange={handleInputChange} />
 
                 <button className="add-btn" onClick={addTask}>
-                    <img src="./src/assets/add.png" alt="add"/>
+                    <img src="/assets/add.png" alt="add"/>
                 </button>
             </div>
 
@@ -103,17 +103,17 @@ const ToDoList = () => {
 
                         <button className="up-btn"
                             onClick = {() => moveTaskUp(index)}>
-                            <img src="src/assets/up-arrow.png" alt="up"/>
+                            <img src="./assets/up-arrow.png" alt="up"/>
                         </button>
 
                         <button className="down-btn"
                             onClick = {() => moveTaskDown(index)}>
-                            <img src="src/assets/down-arrow.png" alt="down"/>
+                            <img src="/assets/down-arrow.png" alt="down"/>
                         </button>
 
                         <button className="delete-btn"
                             onClick = {() => deleteTask(index)}>
-                          <img src="src/assets/trash.png" alt="delete"/>
+                          <img src="/assets/trash.png" alt="delete"/>
 
                         </button>
                     </li>
