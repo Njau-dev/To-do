@@ -1,4 +1,6 @@
 ##
+If you're on mobile the link to the page is down below;
+https://personal-to-do-app.vercel.app/
 
 I decided to do something fun that will help me and this is what I came up with
 
