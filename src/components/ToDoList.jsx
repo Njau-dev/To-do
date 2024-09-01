@@ -23,12 +23,13 @@ const ToDoList = () => {
  
     
     useEffect(() => {
-        console.log("Saving tasks to localStorage:", tasks);
-        localStorage.setItem('tasks', JSON.stringify(tasks));
+        if (tasks.length > 0) {
+            console.log("Saving tasks to localStorage:", tasks);
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+        }
     }, [tasks]);
     
 
-    
 
     
     const handleInputChange = (event) => {
@@ -36,30 +37,17 @@ const ToDoList = () => {
     }
     //this will be the function for the textbox which will add new tasks
 
-    // const addTask = () => {
-
-    //     if (newTask.trim() !=='') {
-
-    //         setTasks(t => [...t, newTask]);
-    //         setNewTask('');
-    //     }
-
-    //     // add an if statement to prevent the add button from adding empty task
-    //     // the argument of the if statement is if the string is not equal to empty is only when it will function
-
-    // }
-
-
     const addTask = () => {
-        if (newTask.trim() !== '') {
-            setTasks(t => {
-                const updatedTasks = [...t, newTask];
-                localStorage.setItem('tasks', JSON.stringify(updatedTasks));
-                return updatedTasks;
-            });
+
+        if (newTask.trim() !=='') {
+
+            setTasks(t => [...t, newTask]);
             setNewTask('');
         }
-    };
+
+        // add an if statement to prevent the add button from adding empty task
+        // the argument of the if statement is if the string is not equal to empty is only when it will function
+    }
     //this will be the add task button function ==> done
 
     const deleteTask = (index) => {
