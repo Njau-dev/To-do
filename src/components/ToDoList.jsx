@@ -91,7 +91,7 @@ const ToDoList = () => {
                 <input type="text" placeholder="Enter new task ..." value={newTask} onChange={handleInputChange} />
 
                 <button className="add-btn" onClick={addTask}>
-                    <img src="src/assets/add.png" alt="add"/>
+                    <img src="./src/assets/add.png" alt="add"/>
                 </button>
             </div>
 
