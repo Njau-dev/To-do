@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const ToDoList = () => {
 
-    const [tasks, setTasks] = useState(["r", "g", "b" ]);
+    const [tasks, setTasks] = useState([]);
     const [newTask, setNewTask] = useState('');
 
 
@@ -11,7 +11,7 @@ const ToDoList = () => {
     useEffect(() => {
         console.log("Loading tasks from localStorage");
         try {
-            const savedTasks = JSON.parse(localStorage.getItem('tasks')) || '[]';
+            const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
             console.log("Parsed tasks:", savedTasks);
             setTasks(savedTasks);
         } catch (error) {
@@ -19,6 +19,8 @@ const ToDoList = () => {
             setTasks([]);
         }
     }, []);
+
+ 
     
     useEffect(() => {
         console.log("Saving tasks to localStorage:", tasks);
@@ -26,6 +28,7 @@ const ToDoList = () => {
     }, [tasks]);
     
 
+    
 
     
     const handleInputChange = (event) => {
@@ -33,18 +36,30 @@ const ToDoList = () => {
     }
     //this will be the function for the textbox which will add new tasks
 
+    // const addTask = () => {
+
+    //     if (newTask.trim() !=='') {
+
+    //         setTasks(t => [...t, newTask]);
+    //         setNewTask('');
+    //     }
+
+    //     // add an if statement to prevent the add button from adding empty task
+    //     // the argument of the if statement is if the string is not equal to empty is only when it will function
+
+    // }
+
+
     const addTask = () => {
-
-        if (newTask.trim() !=='') {
-
-            setTasks(t => [...t, newTask]);
+        if (newTask.trim() !== '') {
+            setTasks(t => {
+                const updatedTasks = [...t, newTask];
+                localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+                return updatedTasks;
+            });
             setNewTask('');
         }
-
-        // add an if statement to prevent the add button from adding empty task
-        // the argument of the if statement is if the string is not equal to empty is only when it will function
-
-    }
+    };
     //this will be the add task button function ==> done
 
     const deleteTask = (index) => {
